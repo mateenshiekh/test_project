@@ -60,8 +60,12 @@ class SignUpScreen extends StatelessWidget {
                       SnackBar(content: Text(state.error.toString())));
                 }
 
-                if (state is SignInState) {
-                  routerDelegate.pushAndRemoveUntilPage(name: '/home');
+                if (state is UserCreatedState) {
+                  _emailController.clear();
+                  _passwordController.clear();
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          "${state.userCredential.user!.email} has been created successfully.")));
                 }
               }, builder: (context, state) {
                 if (state is AuthLoadingState) {

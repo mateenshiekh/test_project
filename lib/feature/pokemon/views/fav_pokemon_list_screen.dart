@@ -1,7 +1,6 @@
 import 'package:case_study/core/route/route_delegate.dart';
 import 'package:case_study/feature/auth/bloc/auth_bloc.dart';
 import 'package:case_study/feature/pokemon/bloc/fav_pokemon_bloc.dart';
-import 'package:case_study/feature/pokemon/bloc/pokemon_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -19,7 +19,26 @@ class PokemonBloc extends Cubit<PokemonState> {
     }
   }
 
-  void markFavPokemon(UserMap userMap, String name) async {
-    await _pokemonRepository.markPokemonFav(userMap.uid, name);
+  Future markFavPokemon(UserMap userMap, String name) async {
+    return await _pokemonRepository.markPokemonFav(userMap.uid, name);
   }
+}
+
+abstract class PokemonState extends Equatable {
+  @override
+  List<Object> get props => [];
+}
+
+class PokemonInitState extends PokemonState {}
+
+class PokemonLoadingState extends PokemonState {}
+
+class PokemonFailureState extends PokemonState {
+  final error;
+  PokemonFailureState({this.error});
+}
+
+class PokemonLoadedState extends PokemonState {
+  final List<Pokemon> pokemons;
+  PokemonLoadedState({required this.pokemons});
 }

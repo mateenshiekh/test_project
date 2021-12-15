@@ -80,7 +80,11 @@ class SignInScreen extends StatelessWidget {
                 height: 20,
               ),
               ElevatedButton(
-                  onPressed: () => routerDelegate.pushPage(name: '/signUp'),
+                  onPressed: () {
+                    _emailController.clear();
+                    _passwordController.clear();
+                    routerDelegate.pushPage(name: '/signUp');
+                  },
                   child: Text("Sign Up")),
             ],
           ),

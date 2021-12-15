@@ -29,11 +29,13 @@ class PokemonRepository implements IPokemonRepository {
   Future markPokemonFav(String uid, String name) async {
     final pref = await _getPref();
     List<String> names = [];
+
     if (pref.getStringList(uid) != null) {
       names.addAll(pref.getStringList(uid)!);
     }
-    names.add(name);
-    print(names);
+
+    if (!names.contains(name)) names.add(name);
+
     await pref.setStringList(uid, names);
   }
 
